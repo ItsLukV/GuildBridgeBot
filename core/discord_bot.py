@@ -17,8 +17,8 @@ from core.config import DiscordConfig, RedisConfig, DataConfig, SettingsConfig
 from core.minecraft_bot import MinecraftBotManager
 from core.redis_handler import RedisManager
 
-regex = re.compile(r"Guild > ([\[\]+ a-zA-Z0-9_]+): (.+)")
-regex_officer = re.compile(r"Officer > ([\[\]+ a-zA-Z0-9_]+): (.+)")
+regex = re.compile(r"Guild > ([\[\]+ a-zA-Z0-9_æøåÆØÅ]+): (.+)")
+regex_officer = re.compile(r"Officer > ([\[\]+ a-zA-Z0-9_æøåÆØÅ]+): (.+)")
 
 emoji_regex = re.compile(r"<a?:(\w+):\d+>")
 mention_regex = re.compile(r"<@!?(\d+)>")
