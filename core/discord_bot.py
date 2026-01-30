@@ -17,8 +17,8 @@ from core.config import DiscordConfig, RedisConfig, DataConfig, SettingsConfig
 from core.minecraft_bot import MinecraftBotManager
 from core.redis_handler import RedisManager
 
-regex = re.compile(r"Guild > ([\[\]+ a-zA-Z0-9_æøåÆØÅ]+): (.+)")
-regex_officer = re.compile(r"Officer > ([\[\]+ a-zA-Z0-9_æøåÆØÅ]+): (.+)")
+regex = re.compile(r"Guild > ([\[\]+ \w]+): (.+)", re.UNICODE)
+regex_officer = re.compile(r"Officer > ([\[\]+ \w]+): (.+)", re.UNICODE)
 
 emoji_regex = re.compile(r"<a?:(\w+):\d+>")
 mention_regex = re.compile(r"<@!?(\d+)>")
@@ -407,7 +407,7 @@ class DiscordBridgeBot(commands.Bot):
             content = f"/oc {username}: {content}"
         else:
             content = f"/gc {username}: {content}"
-        content = content.encode("utf-8").decode("unicode-escape")
+        content = content.encode("utf-8").decode("utf-8")
         # content = content.encode("ascii", "ignore").decode("ascii")
         if len(content) > 256:
             content = content[:253] + "..."
